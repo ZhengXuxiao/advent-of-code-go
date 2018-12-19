@@ -43,6 +43,17 @@ func ReadFile(filePath string, lines chan string) {
 	close(lines)
 }
 
+func ReadFile2Lines(filePath string) []string {
+	file, _ := os.Open(filePath)
+	scanner := bufio.NewScanner(file)
+	lines := make([]string, 0)
+	for scanner.Scan() {
+		line := scanner.Text()
+		lines = append(lines, line)
+	}
+	return lines
+}
+
 func ParseNum(line string) []int {
 	reg := regexp.MustCompile(`(\-)?\d+`)
 	strs := reg.FindAllString(line, -1)

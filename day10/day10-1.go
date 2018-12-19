@@ -113,7 +113,7 @@ func loss(input [][]int8, lostfunc func([][]int8) float64) float64 {
 	return lostfunc(input)
 }
 
-func entropy(input [][]int8) float64 {
+func entropy(input [][]int) float64 {
 	ps := make([]float64, len(input))
 	for i, row := range input {
 		ps[i] = float64(util.Sum(row)) / float64(len(row))
